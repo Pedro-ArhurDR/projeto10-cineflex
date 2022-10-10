@@ -1,13 +1,13 @@
 import styled from "styled-components"
-import { useState } from "react"
+
 export default function Bottom({imagem, setImagem,nome,hora,setHora,dia}) {
     return(
         <>
         <BarraInf>
-            <img src={imagem}/>
-            <div>
-            <h2>{nome}</h2> 
-            <h2>{dia} - {hora}</h2>
+            <img data-identifier="movie-img-preview" src={imagem}/>
+            <div >
+            <h2 data-identifier="movie-and-session-infos-preview">{nome}</h2> 
+            <h2 data-identifier="movie-and-session-infos-preview">{dia} - {hora}</h2>
             </div>
         </BarraInf>
         </>

@@ -5,7 +5,7 @@ import axios from "axios"
 import { Link,useParams } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Tela2({imagem, setImagem,nome,data,setData,dia,setDia,hora,setHora}) {
+export default function Tela2({imagem, setImagem,nome,setDate,dia,setDia,hora,setHora}) {
     const { IdFilme } = useParams();
     const [horarios,setHorarios] = useState([])
     useEffect(()=>{
@@ -22,6 +22,7 @@ export default function Tela2({imagem, setImagem,nome,data,setData,dia,setDia,ho
 
       function salvarData(h,hora){
         setDia(h.weekday)
+        setDate(h.date)
         setHora(hora)
       }
 
@@ -30,11 +31,11 @@ export default function Tela2({imagem, setImagem,nome,data,setData,dia,setDia,ho
             <Topo/>
             <Container>
             <h1>Selecione o horário</h1>
-            {horarios.map((h,i)=><div key={i}>
+            {horarios.map((h,i)=><div data-identifier="session-date" key={i}>
                 <h2>{h.weekday} - {h.date}</h2>
             <Horario>
-            <Link to={`/assentos/${h.showtimes[0].id}`}><div onClick={()=> salvarData(h,h.showtimes[0].name)}>{h.showtimes[0].name}</div></Link>
-            <Link to={`/assentos/${h.showtimes[1].id}`}><div onClick={()=> salvarData(h,h.showtimes[1].name)}>{h.showtimes[1].name}</div></Link>
+            <Link to={`/assentos/${h.showtimes[0].id}`}><div data-identifier="hour-minute-btn" onClick={()=> salvarData(h,h.showtimes[0].name)}>{h.showtimes[0].name}</div></Link>
+            <Link to={`/assentos/${h.showtimes[1].id}`}><div data-identifier="hour-minute-btn" onClick={()=> salvarData(h,h.showtimes[1].name)}>{h.showtimes[1].name}</div></Link>
             </Horario>
             </div>)}
             </Container>
@@ -56,6 +57,7 @@ const Container = styled.div`
     h2{
         font-size:20px;
         margin:15px 15px;
+        text-decoration: none;
     }
     div{
         margin-left:10px;
@@ -74,5 +76,7 @@ const Horario = styled.div`
         align-items:center;
         font-size: 18px;
         color:white;
+        text-decoration: none;
+        border-radius:5px;
     }
 `

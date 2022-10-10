@@ -1,7 +1,7 @@
 import Topo from "../Tela1/Topo"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-export default function Tela4({dados,nome,dia,hora,poltronas}) {
+export default function Tela4({dados,nome,date,hora,poltronas}) {
     return (
         <>
         <Topo/>
@@ -9,19 +9,19 @@ export default function Tela4({dados,nome,dia,hora,poltronas}) {
         <h1>Pedido feito com sucesso!</h1>
         <Filme>
             <h2>Filme e sessão</h2>
-            <p>{nome}</p> 
-            <p>{dia} - {hora}</p>
+            <p data-identifier="movie-session-infos-reserve-finished">{nome}</p> 
+            <p data-identifier="movie-session-infos-reserve-finished">{date} - {hora}</p>
         </Filme>
         <Ingressos>
             <h2>Ingressos</h2>
-            {poltronas.map((e,i )=> <p key={i}> Assento {e}</p>)}
+            {poltronas.map((e,i )=> <p data-identifier="seat-infos-reserve-finished" key={i}> Assento {e}</p>)}
         </Ingressos>
         <Comprador>
         <h2>Comprador</h2>
-        <p>Nome: {dados.name}</p>
-        <p>CPF: {dados.cpf}</p>
+        <p data-identifier="buyer-infos-reserve-finished">Nome: {dados.name}</p>
+        <p data-identifier="buyer-infos-reserve-finished">CPF: {dados.cpf}</p>
         </Comprador>
-        <Link to="/"><button>Voltar pra Home</button></Link>
+        <Link data-identifier="back-to-home-btn" to="/"><button>Voltar pra Home</button></Link>
         </Container>
         </>
     )

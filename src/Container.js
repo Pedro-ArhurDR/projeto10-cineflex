@@ -14,6 +14,7 @@ export default function Container(){
             hora:""
         }
     ])
+    const [date,setDate] = useState()
     const [dia,setDia] = useState("")
     const [hora,setHora] = useState("")
     const [comprador,setComprador] = useState("")
@@ -33,13 +34,13 @@ export default function Container(){
         <Route path="/" element={<Tela1 nome={nome} setNome={setNome} imagem={imagem} setImagem={setImagem}/>}/>
 
         <Route path="/sessoes/:IdFilme" element={<Tela2 hora={hora} setHora={setHora} dia={dia} setDia={setDia} 
-        data={data} setData={setData} nome={nome} setNome={setNome} imagem={imagem} setImagem={setImagem} />}/>
+        data={data} setDate={setDate} nome={nome} setNome={setNome} imagem={imagem} setImagem={setImagem} />}/>
 
-        <Route path="/assentos/:IdSessao" element={<Tela3 poltronas={poltronas} setPoltronas={setPoltronas} setReservas={setReservas} reservas={reservas}
+        <Route path="/assentos/:IdSessao" element={<Tela3 dados={dados} poltronas={poltronas} setPoltronas={setPoltronas} setReservas={setReservas} reservas={reservas}
         hora={hora} setHora={setHora} cpf={cpf} setCpf={setCpf} comprador={comprador} setComprador={setComprador}
         dia={dia} nome={nome} setNome={setNome} imagem={imagem} setImagem={setImagem}/>} />
 
-        <Route path="/sucesso" element={<Tela4 hora={hora} poltronas={poltronas} dia={dia} nome={nome} dados={dados}/>}/>
+        <Route path="/sucesso" element={<Tela4 date={date} hora={hora} poltronas={poltronas} nome={nome} dados={dados}/>}/>
 
     </Routes>    
     </BrowserRouter>

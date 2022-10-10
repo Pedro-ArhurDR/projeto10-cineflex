@@ -30,7 +30,7 @@ export default function Tela1({imagem, setImagem,nome,setNome}){
     <Topo/>
     <Container>
         <h1>Selecione o filme</h1>
-        <div>{filmes.map((item,i)=><Link key={i} to={`/sessoes/${item.id}`}><img onClick={()=>infos(item)} src={item.posterURL}/></Link>)}</div>
+        <div>{filmes.map((item,i)=><Link key={i} to={`/sessoes/${item.id}`}><img data-identifier="movie-outdoor" onClick={()=>infos(item)} src={item.posterURL}/></Link>)}</div>
     </Container>
     </>
     )

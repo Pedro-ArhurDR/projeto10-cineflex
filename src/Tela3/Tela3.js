@@ -7,13 +7,10 @@ import styled from "styled-components"
 import AssentosT3 from "./AssentosT3"
 import Exemplo from "./Exemplo"
 
-export default function Tela3({imagem, poltronas,setPoltronas,setImagem,nome,dia,hora,setHora,comprador,setComprador,cpf, setCpf,reservas,setReservas}) {
+export default function Tela3({imagem,dados,poltronas,setPoltronas,setImagem,nome,dia,hora,setHora,comprador,setComprador,cpf, setCpf,reservas,setReservas}) {
     const { IdSessao } = useParams()
     const [assentos, setAssentos] = useState([])
     const navigate = useNavigate()
-    const Selecionado = "#1AAE9E"
-    const Indisponível ="#C3CFD9"
-    const Disponível = "#FBE192"
     useEffect(()=>{
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${IdSessao}/seats`)
     
@@ -30,6 +27,7 @@ export default function Tela3({imagem, poltronas,setPoltronas,setImagem,nome,dia
 
       function enviarInfos(event){
         event.preventDefault();
+        axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many',dados)
         navigate('/sucesso')
       }
 
@@ -47,10 +45,10 @@ export default function Tela3({imagem, poltronas,setPoltronas,setImagem,nome,dia
                 <Inputs>
                 <form onSubmit={enviarInfos}>
                  <h2>Nome do Comprador:</h2>
-                 <input type='text' value={comprador} placeholder="Digite seu nome..." onChange={e => setComprador(e.target.value)} required></input>
+                 <input data-identifier="buyer-name-input" type='text' value={comprador} placeholder="Digite seu nome..." onChange={e => setComprador(e.target.value)} required></input>
                  <h2>CPF do Comprador:</h2>
-                 <input type='text' value={cpf} placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)} required></input>
-                 <Reservar><button type="submit">Reservar Assentos</button></Reservar>
+                 <input data-identifier="buyer-cpf-input" type='text' value={cpf} placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)} required></input>
+                 <Reservar><button data-identifier="reservation-btn" type="submit">Reservar Assentos</button></Reservar>
                 </form>
                 </Inputs>
             </Container>

@@ -6,9 +6,9 @@ export default function Exemplo() {
     return(
         <>
                  <Exemplos>
-                    <div><Botao cor={Selecionado} ></Botao>Selecionado</div>
-                    <div><Botao cor={Indisponível} ></Botao>Indisponível</div>
-                    <div ><Botao cor={Disponível} ></Botao>Dponível</div>
+                    <div><Botao data-identifier="seat-selected-subtitle" cor={Selecionado} ></Botao>Selecionado</div>
+                    <div><Botao data-identifier="seat-unavailable-subtitle" cor={Indisponível} ></Botao>Indisponível</div>
+                    <div ><Botao data-identifier="seat-available-subtitle"cor={Disponível} ></Botao>Disponível</div>
                 </Exemplos>
         </>
     )
