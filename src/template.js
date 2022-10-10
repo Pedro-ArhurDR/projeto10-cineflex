@@ -17,14 +17,15 @@ export default function Tela1({imagem, setImagem,nome,setNome}){
     promise.catch(erro => {
         console.log(erro)
     })
+    console.log(filmes)
   },[])
 
   function infos(item){
     setImagem(item.posterURL) 
     setNome(item.title)
-
+    console.log(item)
   }
-
+  console.log(filmes)
     return (
     <>
     <Topo/>

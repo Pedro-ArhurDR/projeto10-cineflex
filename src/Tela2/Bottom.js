@@ -1,9 +1,14 @@
 import styled from "styled-components"
-export default function Bottom({imagem, setImagem,nome,setNome}) {
+import { useState } from "react"
+export default function Bottom({imagem, setImagem,nome,hora,setHora,dia}) {
     return(
         <>
         <BarraInf>
-            <img src={imagem}/> <h2>{nome}</h2> 
+            <img src={imagem}/>
+            <div>
+            <h2>{nome}</h2> 
+            <h2>{dia} - {hora}</h2>
+            </div>
         </BarraInf>
         </>
     )
@@ -20,7 +25,10 @@ const BarraInf = styled.div`
        display:flex;
        align-items: center;
        h2{
-        font-size: 26px;
+        font-size: 20px;
+        margin-left:15px;
+       }
+       p{
         margin-left:15px;
        }
        img{

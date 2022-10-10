@@ -5,7 +5,7 @@ import axios from "axios"
 import { Link,useParams } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Tela2({imagem, setImagem,nome,setNome}) {
+export default function Tela2({imagem, setImagem,nome,data,setData,dia,setDia,hora,setHora}) {
     const { IdFilme } = useParams();
     const [horarios,setHorarios] = useState([])
     useEffect(()=>{
@@ -18,8 +18,12 @@ export default function Tela2({imagem, setImagem,nome,setNome}) {
         promise.catch(erro => {
             console.log('ERRO')
         })
-        console.log(horarios)
       },[])
+
+      function salvarData(h,hora){
+        setDia(h.weekday)
+        setHora(hora)
+      }
 
     return (
         <>
@@ -29,12 +33,12 @@ export default function Tela2({imagem, setImagem,nome,setNome}) {
             {horarios.map((h,i)=><div key={i}>
                 <h2>{h.weekday} - {h.date}</h2>
             <Horario>
-            <Link to={`/assentos/${h.showtimes[0].id}`}><div onClick={()=> console.log('ID',h.showtimes[0].id)}>{h.showtimes[0].name}</div></Link>
-            <Link to={`/assentos/${h.showtimes[1].id}`}><div onClick={()=> console.log('ID',h.showtimes[1].id)}>{h.showtimes[1].name}</div></Link>
+            <Link to={`/assentos/${h.showtimes[0].id}`}><div onClick={()=> salvarData(h,h.showtimes[0].name)}>{h.showtimes[0].name}</div></Link>
+            <Link to={`/assentos/${h.showtimes[1].id}`}><div onClick={()=> salvarData(h,h.showtimes[1].name)}>{h.showtimes[1].name}</div></Link>
             </Horario>
             </div>)}
             </Container>
-            <Bottom nome={nome} imagem={imagem} setImagem={setImagem}/>
+            <Bottom nome={nome} hora={hora} setHora={setHora} dia={dia} data={data} setData={setData} imagem={imagem} setImagem={setImagem}/>
         </>
     )
 }
