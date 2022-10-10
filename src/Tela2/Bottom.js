@@ -16,7 +16,7 @@ export default function Bottom({imagem, setImagem,nome,hora,setHora,dia}) {
 
 const BarraInf = styled.div`
        background-color:#9EADBA; 
-       position:absolute;
+       position:fixed;
        bottom:0;
        display: flex;
        left:0;
