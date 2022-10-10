@@ -15,12 +15,12 @@ export default function Bottom({imagem, setImagem,nome,hora,setHora,dia}) {
 }
 
 const BarraInf = styled.div`
+        margin-top:15px;
        background-color:#9EADBA; 
-       position:fixed;
        bottom:0;
        display: flex;
        left:0;
-       height:117px;
+       height:20vh;
        width:100%;
        display:flex;
        align-items: center;
