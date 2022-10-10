@@ -2,14 +2,15 @@ import Topo from "../Tela1/Topo"
 import Bottom from "../Tela2/Bottom"
 import { useEffect,useState } from "react"
 import axios from "axios"
-import { Link,useParams } from "react-router-dom"
+import { Link,useParams,useNavigate, Navigate } from "react-router-dom"
 import styled from "styled-components"
 import AssentosT3 from "./AssentosT3"
 import Exemplo from "./Exemplo"
 
-export default function Tela3({imagem, setImagem,nome,dia,hora,setHora,comprador,setComprador,cpf, setCpf,reservas,setReservas}) {
+export default function Tela3({imagem, poltronas,setPoltronas,setImagem,nome,dia,hora,setHora,comprador,setComprador,cpf, setCpf,reservas,setReservas}) {
     const { IdSessao } = useParams()
     const [assentos, setAssentos] = useState([])
+    const navigate = useNavigate()
     const Selecionado = "#1AAE9E"
     const Indisponível ="#C3CFD9"
     const Disponível = "#FBE192"
@@ -29,7 +30,7 @@ export default function Tela3({imagem, setImagem,nome,dia,hora,setHora,comprador
 
       function enviarInfos(event){
         event.preventDefault();
-        <Link to="/sucesso"></Link>
+        navigate('/sucesso')
       }
 
     return(
@@ -38,7 +39,8 @@ export default function Tela3({imagem, setImagem,nome,dia,hora,setHora,comprador
             <Container>
                 <h1>Selecione o(s) assentos</h1>
                 <Cadeiras>
-                {assentos.map((e,i)=><AssentosT3 setReservas={setReservas} reservas={reservas}
+                {assentos.map((e,i)=><AssentosT3 poltronas={poltronas} setPoltronas={setPoltronas} 
+                setReservas={setReservas} reservas={reservas}
                     key={i} e={e} i={i} assentos={assentos} />)}
                 </Cadeiras>
                 <Exemplo/>
@@ -48,7 +50,7 @@ export default function Tela3({imagem, setImagem,nome,dia,hora,setHora,comprador
                  <input type='text' value={comprador} placeholder="Digite seu nome..." onChange={e => setComprador(e.target.value)} required></input>
                  <h2>CPF do Comprador:</h2>
                  <input type='text' value={cpf} placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)} required></input>
-                 <Reservar><button type="submit">Reservar Assentos</button> </Reservar>
+                 <Reservar><button type="submit">Reservar Assentos</button></Reservar>
                 </form>
                 </Inputs>
             </Container>

@@ -38,7 +38,7 @@ export default function Tela2({imagem, setImagem,nome,data,setData,dia,setDia,ho
             </Horario>
             </div>)}
             </Container>
-            <Bottom nome={nome} hora={hora} setHora={setHora} dia={dia} data={data} setData={setData} imagem={imagem} setImagem={setImagem}/>
+            <Bottom nome={nome} hora={hora} setHora={setHora} dia={dia} imagem={imagem} setImagem={setImagem}/>
         </>
     )
 }

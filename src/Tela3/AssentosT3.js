@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useState, useEffect } from "react"
-export default function AssentosT3({e,assentos,i,clicarAssento,reservas,setReservas}) {
+export default function AssentosT3({e,assentos,i,clicarAssento,reservas,setReservas,poltronas,setPoltronas}) {
     const[color,setColor] = useState("")
     
     useEffect(()=>{
@@ -13,13 +13,14 @@ export default function AssentosT3({e,assentos,i,clicarAssento,reservas,setReser
       },[])
 
       function clicarAssento(botao){
-
-        if(!reservas.includes(e.id)){
-            setReservas([...reservas,e.id])
-        }
-      
         console.log(botao)
         if(botao===true){
+            if(!reservas.includes(e.id)){
+                setReservas([...reservas,e.id])
+            }
+            if(!poltronas.includes(e.name)){
+                setPoltronas([...poltronas,e.name])
+            }
             setColor("#1AAE9E")
         }   
         else{
@@ -29,8 +30,10 @@ export default function AssentosT3({e,assentos,i,clicarAssento,reservas,setReser
             setColor("#FBE192")
             const index = reservas.indexOf(e.id)
             const novoarray= reservas.splice(index,1)
-            console.log("NOCO", novoarray)
+            const index2 = poltronas.indexOf(e.name)
+            const novoarray2= poltronas.splice(index,1)
             console.log("RESERVAS ATUAIS",reservas)
+            console.log("POLTRONAS ATUAIS",poltronas)
         }
         console.log(e)
        }
