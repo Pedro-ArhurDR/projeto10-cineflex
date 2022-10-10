@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 
-export default function Tela1({imagem, setImagem,nome,setNome}){
+export default function Tela1({setImagem,setNome}){
     const [filmes, setFilmes] = useState([])
   useEffect(()=>{
     const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/`)

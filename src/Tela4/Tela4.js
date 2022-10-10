@@ -1,7 +1,13 @@
 import Topo from "../Tela1/Topo"
 import styled from "styled-components"
-import { Link } from "react-router-dom"
-export default function Tela4({dados,nome,date,hora,poltronas}) {
+import { Link,useNavigate } from "react-router-dom"
+export default function Tela4({dados,nome,date,hora,poltronas,reset}) {
+    const navigate = useNavigate()
+
+    function resetar(){
+        reset()
+        navigate("/")
+    }
     return (
         <>
         <Topo/>
@@ -21,7 +27,7 @@ export default function Tela4({dados,nome,date,hora,poltronas}) {
         <p data-identifier="buyer-infos-reserve-finished">Nome: {dados.name}</p>
         <p data-identifier="buyer-infos-reserve-finished">CPF: {dados.cpf}</p>
         </Comprador>
-        <Link data-identifier="back-to-home-btn" to="/"><button>Voltar pra Home</button></Link>
+            <button onClick={resetar}>Voltar pra Home</button>
         </Container>
         </>
     )

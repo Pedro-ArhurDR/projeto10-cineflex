@@ -40,7 +40,7 @@ export default function AssentosT3({e,assentos,i,clicarAssento,reservas,setReser
 
     return(
         <>
-             <Botao data-identifier="seat" cor={color}
+             <Botao  data-identifier="seat" cor={color}
                 onClick={()=>clicarAssento(e.isAvailable)} key={i}>{e.name}</Botao>
         </>
     )

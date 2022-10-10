@@ -27,6 +27,24 @@ export default function Container(){
         name:comprador,
         cpf:cpf
     }
+
+    function reset(){
+        setImagem()
+        setNome()
+        setData([
+            {
+                dia:"",
+                hora:""
+            }
+        ])
+        setDate()
+        setDia("")
+        setHora("")
+        setComprador("")
+        setCpf("")
+        setReservas([])
+        setPoltronas([])
+    }
     console.log(poltronas)
     return( 
     <BrowserRouter>
@@ -40,7 +58,7 @@ export default function Container(){
         hora={hora} setHora={setHora} cpf={cpf} setCpf={setCpf} comprador={comprador} setComprador={setComprador}
         dia={dia} nome={nome} setNome={setNome} imagem={imagem} setImagem={setImagem}/>} />
 
-        <Route path="/sucesso" element={<Tela4 date={date} hora={hora} poltronas={poltronas} nome={nome} dados={dados}/>}/>
+        <Route path="/sucesso" element={<Tela4 reset={reset} date={date} hora={hora} poltronas={poltronas} nome={nome} dados={dados}/>}/>
 
     </Routes>    
     </BrowserRouter>

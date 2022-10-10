@@ -27,8 +27,16 @@ export default function Tela3({imagem,dados,poltronas,setPoltronas,setImagem,nom
 
       function enviarInfos(event){
         event.preventDefault();
-        axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many',dados)
-        navigate('/sucesso')
+        console.log("NUMERO DE POLTRONAS" , poltronas)
+        if(reservas.length === 0){
+            alert("Escolha no mínimo 01(um) assento")
+            
+        }
+        else{
+            navigate('/sucesso')
+            axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many',dados)
+            console.log("NUMERO DE POLTRONAS 2" , poltronas)
+        }
       }
 
     return(
